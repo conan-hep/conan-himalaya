@@ -1,5 +1,5 @@
-#include "himalaya/HierarchyCalculator.hpp"
-#include "himalaya/version.hpp"
+#include "HierarchyCalculator.hpp"
+#include "version.hpp"
 #include <iostream>
 #include <cmath>
 

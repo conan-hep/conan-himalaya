@@ -13,7 +13,7 @@ class HimalayaConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"fPIC": [True, False]}
     default_options = ("fPIC=True")
-    exports = ["LICENSE"]
+    exports = ["LICENSE", "FindHimalaya.cmake"]
     generators = "cmake"
     requires = ("eigen/[>=3.0]@conan/stable")
     _source_subfolder = "Himalaya"
@@ -30,7 +30,7 @@ class HimalayaConan(ConanFile):
     def package(self):
         for header in ["HierarchyCalculator.hpp", "HierarchyObject.hpp",
                        "Himalaya_interface.hpp", "version.hpp"]:
-            self.copy(header, dst="include{}himalaya".format(os.sep),
+            self.copy(header, dst="include",
                       src="Himalaya{}source{}include".format(os.sep, os.sep),
                       keep_path=False)
 
@@ -40,6 +40,7 @@ class HimalayaConan(ConanFile):
         self.copy("*.dylib", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
         self.copy("LICENSE", src=self._source_subfolder, dst="licenses", keep_path=False)
+        self.copy('FindHimalaya.cmake', '.', '.')
 
     def package_info(self):
         self.cpp_info.libs = ["Himalaya"]

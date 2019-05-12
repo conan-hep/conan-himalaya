@@ -4,5 +4,7 @@ project(PackageTest CXX)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
+find_package(Himalaya REQUIRED)
+
 add_executable(test_himalaya test_himalaya.cpp)
-target_link_libraries(test_himalaya ${CONAN_LIBS})
+target_link_libraries(test_himalaya Himalaya::Himalaya)
