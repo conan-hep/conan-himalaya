@@ -11,6 +11,9 @@ class HimalayaConan(ConanFile):
     description = "C++ library to calculate three-loop corrections to the Higgs boson mass in the MSSM"
     topics = ("HEP")
     settings = "os", "compiler", "build_type", "arch"
+    options = {"fPIC": [True, False]}
+    default_options = ("fPIC=True")
+    exports = ["LICENSE"]
     generators = "cmake"
     requires = ("eigen/[>=3.0]@conan/stable")
     _source_subfolder = "Himalaya"
