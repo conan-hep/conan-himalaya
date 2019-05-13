@@ -30,8 +30,9 @@ class HimalayaConan(ConanFile):
     def package(self):
         for header in ["HierarchyCalculator.hpp", "HierarchyObject.hpp",
                        "Himalaya_interface.hpp", "version.hpp"]:
-            self.copy(header, dst="include",
-                      src="Himalaya{}source{}include".format(os.sep, os.sep),
+            self.copy(header,
+                      dst=os.path.join("include", "himalaya"),
+                      src=os.path.join("Himalaya", "source", "include"),
                       keep_path=False)
 
         self.copy("*.lib", dst="lib", keep_path=False)
