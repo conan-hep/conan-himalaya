@@ -1,9 +1,9 @@
 env:
    global:
-     # - CONAN_REFERENCE: "Himalaya/2.0.1"
-     # - CONAN_USERNAME: "user"
+     - CONAN_REFERENCE: "Himalaya/2.0.1"
+     - CONAN_USERNAME: "user"
      # - CONAN_LOGIN_USERNAME: "user"
-     # - CONAN_CHANNEL: "channel"
+     - CONAN_CHANNEL: "channel"
      # - CONAN_UPLOAD: "UPLOAD_URL"
      # - CONAN_STABLE_BRANCH_PATTERN: "release/*"
      # - CONAN_UPLOAD_ONLY_WHEN_STABLE: 1
