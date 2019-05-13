@@ -1,5 +1,7 @@
 import os
-from conans import ConanFile, CMake
+from conans import ConanFile, CMake, tools
+from conans.model.version import Version
+from conans.tools import SystemPackageTool
 
 
 class HimalayaConan(ConanFile):
@@ -21,6 +23,28 @@ class HimalayaConan(ConanFile):
     def source(self):
         self.run("git clone https://github.com/Himalaya-Library/Himalaya")
         self.run("cd Himalaya && git checkout {}".format(self.version))
+
+    def system_requirements(self):
+        installer = SystemPackageTool()
+
+        if tools.os_info.is_linux:
+            if tools.os_info.with_pacman or tools.os_info.with_yum:
+                installer.install("gcc-fortran")
+            else:
+                installer.install("gfortran")
+                versionfloat = Version(self.settings.compiler.version.value)
+                if self.settings.compiler == "gcc":
+                    if versionfloat < "5.0":
+                        installer.install("libgfortran-{}-dev".format(versionfloat))
+                    else:
+                        installer.install("libgfortran-{}-dev".format(int(versionfloat)))
+
+        if tools.os_info.is_macos and Version(self.settings.compiler.version.value) > "7.3":
+            try:
+                installer.install("gcc", update=True, force=True)
+            except Exception:
+                self.output.warn("brew install gcc failed. Tying to fix it with 'brew link'")
+                self.run("brew link --overwrite gcc")
 
     def build(self):
         cmake = CMake(self)
