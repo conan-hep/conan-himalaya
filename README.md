@@ -2,6 +2,17 @@
 
 ## Conan package recipe for [*Himalaya*](https://github.com/Himalaya-Library)
 
+References:
+
+* Robert V. Harlander, Jonas Klappert, Alexander Voigt, *Higgs mass
+  prediction in the MSSM at three-loop level in a pure DR context*,
+  [*Eur.Phys.J.* **C77** (2017) no.12, 814](https://inspirehep.net/record/1617767)
+  [arXiv:1708.05720](https://arxiv.org/abs/1708.05720)
+
+* R.V. Harlander, J. Klappert, A.D. Ochoa Franco, A. Voigt, *The light
+  CP-even MSSM Higgs mass resummed to fourth logarithmic order*,
+  [*Eur.Phys.J.* **C78** (2018) no.10, 874](https://inspirehep.net/record/1681658)
+  [arXiv:1807.03509](https://arxiv.org/abs/1807.03509)
 
 ## For users
 
@@ -9,13 +20,13 @@
 
 Himalaya can be installed with conan by running:
 
-    conan install Himalaya/2.15@conan/stable
+    conan install Himalaya/2.0.1@conan/stable
 
 Alternatively a `conanfile.txt` file can be created in your project
 directory with the following content:
 
     [requires]
-    Himalaya/2.15@conan/stable
+    Himalaya/2.0.1@conan/stable
 
     [generators]
     cmake
