@@ -20,6 +20,9 @@ class HimalayaConan(ConanFile):
     requires = ("eigen/[>=3.0]@conan/stable")
     _source_subfolder = "Himalaya"
 
+    def _have_fortran_compiler(self):
+        return tools.which("gfortran") != None or tools.which("ifort") != None
+
     def source(self):
         self.run("git clone https://github.com/Himalaya-Library/Himalaya")
         self.run("cd Himalaya && git checkout {}".format(self.version))
@@ -27,17 +30,18 @@ class HimalayaConan(ConanFile):
     def system_requirements(self):
         installer = SystemPackageTool()
 
-        if tools.os_info.is_linux:
-            if tools.os_info.with_pacman or tools.os_info.with_yum or tools.os_info.with_zypper:
-                installer.install("gcc-fortran")
-            else:
-                installer.install("gfortran")
-                versionfloat = Version(self.settings.compiler.version.value)
-                if self.settings.compiler == "gcc":
-                    if versionfloat < "5.0":
-                        installer.install("libgfortran-{}-dev".format(versionfloat))
-                    else:
-                        installer.install("libgfortran-{}-dev".format(int(versionfloat)))
+        if not self._have_fortran_compiler():
+            if tools.os_info.is_linux:
+                if tools.os_info.with_pacman or tools.os_info.with_yum or tools.os_info.with_zypper:
+                    installer.install("gcc-fortran")
+                else:
+                    installer.install("gfortran")
+                    versionfloat = Version(self.settings.compiler.version.value)
+                    if self.settings.compiler == "gcc":
+                        if versionfloat < "5.0":
+                            installer.install("libgfortran-{}-dev".format(versionfloat))
+                        else:
+                            installer.install("libgfortran-{}-dev".format(int(versionfloat)))
 
         if tools.os_info.is_macos and Version(self.settings.compiler.version.value) > "7.3":
             try:
