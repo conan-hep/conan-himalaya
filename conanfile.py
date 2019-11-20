@@ -6,7 +6,7 @@ from conans.tools import SystemPackageTool
 
 class HimalayaConan(ConanFile):
     name = "Himalaya"
-    version = "2.0.2"
+    version = "3.0.0"
     license = "GPL-3.0-only"
     author = "Alexander Voigt"
     url = "https://github.com/Himalaya-Library/Himalaya"
