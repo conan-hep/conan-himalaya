@@ -14,6 +14,10 @@ References:
   [*Eur.Phys.J.* **C78** (2018) no.10, 874](https://inspirehep.net/record/1681658)
   [arXiv:1807.03509](https://arxiv.org/abs/1807.03509)
 
+* R. V. Harlander, J. Klappert, and A. Voigt,
+  *The light CP-even MSSM Higgs mass including N3LO+N3LL QCD corrections*,
+  [arXiv:1910.03595](https://arxiv.org/abs/1910.03595)
+
 ## For users
 
 ### Installation of dependencies
