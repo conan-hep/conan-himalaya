@@ -16,9 +16,19 @@ linux: &linux
    python: "3.6"
    services:
      - docker
+   addons:
+     apt:
+       packages:
+         - libeigen3-dev
+
 osx: &osx
    os: osx
    language: generic
+   addons:
+     homebrew:
+       packages:
+         - eigen
+
 matrix:
    include:
 
