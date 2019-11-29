@@ -18,14 +18,14 @@ class HimalayaConan(ConanFile):
     exports = ["LICENSE", "FindHimalaya.cmake"]
     generators = "cmake"
     requires = ("eigen/[>=3.0]@conan/stable")
-    _source_subfolder = "Himalaya"
+    _source_subfolder = "Himalaya-{}".format(version)
+    _tarball = "{}.tar.gz".format(version)
 
     def _have_fortran_compiler(self):
         return tools.which("gfortran") != None or tools.which("ifort") != None
 
     def source(self):
-        self.run("git clone https://github.com/Himalaya-Library/Himalaya")
-        self.run("cd Himalaya && git checkout {}".format(self.version))
+        tools.get("https://github.com/Himalaya-Library/Himalaya/archive/{}".format(self._tarball))
 
     def system_requirements(self):
         installer = SystemPackageTool()
@@ -59,7 +59,7 @@ class HimalayaConan(ConanFile):
         for header in ["HierarchyCalculator.hpp", "HierarchyObject.hpp",
                        "Himalaya_interface.hpp", "version.hpp"]:
             self.copy(header, dst="include",
-                      src="Himalaya{}source{}include".format(os.sep, os.sep),
+                      src="{}{}source{}include".format(self._source_subfolder, os.sep, os.sep),
                       keep_path=False)
 
         self.copy("*.lib", dst="lib", keep_path=False)
