@@ -16,7 +16,7 @@ class HimalayaConan(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = ("shared=False", "fPIC=True")
     exports = ["LICENSE", "FindHimalaya.cmake"]
-    generators = "cmake"
+    generators = "cmake_paths"
     requires = ("eigen/[>=3.0]@conan/stable")
     _source_subfolder = "Himalaya-{}".format(version)
     _tarball = "{}.tar.gz".format(version)
@@ -52,6 +52,7 @@ class HimalayaConan(ConanFile):
 
     def build(self):
         cmake = CMake(self)
+        cmake.definitions['CMAKE_TOOLCHAIN_FILE'] = 'conan_paths.cmake'
         cmake.configure(source_folder=self._source_subfolder)
         cmake.build()
 
