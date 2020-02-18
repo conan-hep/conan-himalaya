@@ -72,5 +72,5 @@ class HimalayaConan(ConanFile):
         self.copy('FindHimalaya.cmake', '.', '.')
 
     def package_info(self):
-        self.cpp_info.libs = ["Himalaya"]
+        self.cpp_info.libs = ["Himalaya", "DSZ"]
 
