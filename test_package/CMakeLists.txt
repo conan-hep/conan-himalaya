@@ -5,9 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
-
-find_package(Himalaya REQUIRED)
+conan_basic_setup(TARGETS)
 
 add_executable(test_himalaya test_himalaya.cpp)
-target_link_libraries(test_himalaya Himalaya::Himalaya)
+target_link_libraries(test_himalaya CONAN_PKG::Himalaya)

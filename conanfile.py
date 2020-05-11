@@ -15,7 +15,7 @@ class HimalayaConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = ("shared=False", "fPIC=True")
-    exports = ["LICENSE", "FindHimalaya.cmake"]
+    exports = ["LICENSE"]
     generators = "cmake_paths"
     requires = ("eigen/[>=3.0]@conan/stable")
     _source_subfolder = "Himalaya-{}".format(version)
@@ -69,7 +69,6 @@ class HimalayaConan(ConanFile):
         self.copy("*.dylib", dst="lib", keep_path=False)
         self.copy("*.a", dst="lib", keep_path=False)
         self.copy("LICENSE", src=self._source_subfolder, dst="licenses", keep_path=False)
-        self.copy('FindHimalaya.cmake', '.', '.')
 
     def package_info(self):
         self.cpp_info.libs = ["Himalaya", "DSZ"]
