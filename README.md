@@ -24,13 +24,13 @@ References:
 
 Himalaya can be installed with conan by running:
 
-    conan install Himalaya/3.0.1@conan/stable
+    conan install Himalaya/4.0.0@conan/stable
 
 Alternatively a `conanfile.txt` file can be created in your project
 directory with the following content:
 
     [requires]
-    Himalaya/3.0.1@conan/stable
+    Himalaya/4.0.0@conan/stable
 
     [generators]
     cmake

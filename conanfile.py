@@ -6,7 +6,7 @@ from conans.tools import SystemPackageTool
 
 class HimalayaConan(ConanFile):
     name = "Himalaya"
-    version = "3.0.1"
+    version = "4.0.0"
     license = "GPL-3.0-only"
     author = "Alexander Voigt"
     url = "https://github.com/Himalaya-Library/Himalaya"
@@ -57,12 +57,8 @@ class HimalayaConan(ConanFile):
         cmake.build()
 
     def package(self):
-        for header in ["HierarchyCalculator.hpp", "HierarchyObject.hpp",
-                       "Himalaya_interface.hpp", "version.hpp"]:
-            self.copy(header, dst="include",
-                      src="{}{}source{}include".format(self._source_subfolder, os.sep, os.sep),
-                      keep_path=False)
-
+        self.copy("*.hpp", src="{}{}include".format(self._source_subfolder, os.sep),
+                  dst="include", keep_path=True)
         self.copy("*.lib", dst="lib", keep_path=False)
         self.copy("*.dll", dst="bin", keep_path=False)
         self.copy("*.so", dst="lib", keep_path=False)

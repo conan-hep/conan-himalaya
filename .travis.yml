@@ -1,6 +1,6 @@
 env:
    global:
-     - CONAN_REFERENCE: "Himalaya/3.0.1"
+     - CONAN_REFERENCE: "Himalaya/4.0.0"
      - CONAN_USERNAME: "conan"
      # - CONAN_LOGIN_USERNAME: "conan"
      - CONAN_CHANNEL: "stable"
