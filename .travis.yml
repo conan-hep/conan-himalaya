@@ -2,11 +2,7 @@ env:
    global:
      - CONAN_REFERENCE: "Himalaya/4.0.0"
      - CONAN_USERNAME: "conan"
-     # - CONAN_LOGIN_USERNAME: "conan"
      - CONAN_CHANNEL: "stable"
-     # - CONAN_UPLOAD: "UPLOAD_URL"
-     # - CONAN_STABLE_BRANCH_PATTERN: "release/*"
-     # - CONAN_UPLOAD_ONLY_WHEN_STABLE: 1
 
 linux: &linux
    os: linux
